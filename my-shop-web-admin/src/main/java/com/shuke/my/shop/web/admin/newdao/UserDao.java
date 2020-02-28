@@ -1,4 +1,4 @@
-package com.shuke.my.shop.web.admin.dao;
+package com.shuke.my.shop.web.admin.newdao;
 
 
 import com.shuke.my.shop.domain.User;

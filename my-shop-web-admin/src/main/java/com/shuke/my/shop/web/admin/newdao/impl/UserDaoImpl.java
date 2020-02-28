@@ -1,12 +1,13 @@
-package com.shuke.my.shop.web.admin.dao.impl;
+package com.shuke.my.shop.web.admin.newdao.impl;
 
 
 import com.shuke.my.shop.domain.User;
-import com.shuke.my.shop.web.admin.dao.UserDao;
+import com.shuke.my.shop.web.admin.newdao.UserDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+@Repository
 public class UserDaoImpl implements UserDao {
 
     private Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);

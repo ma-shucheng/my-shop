@@ -1,7 +1,7 @@
 package com.shuke.my.shop.web.admin.service.impl;
 
 import com.shuke.my.shop.domain.User;
-import com.shuke.my.shop.web.admin.dao.UserDao;
+import com.shuke.my.shop.web.admin.newdao.UserDao;
 import com.shuke.my.shop.web.admin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
