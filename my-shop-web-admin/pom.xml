@@ -17,6 +17,7 @@
     <description></description>
 
     <dependencies>
+        <!--Project Begin-->
         <dependency>
             <groupId>com.shuke</groupId>
             <artifactId>my-shop-domain</artifactId>
@@ -27,6 +28,8 @@
             <artifactId>my-shop-commons</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <!--Project End-->
+        <!--Spring Begin-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -35,6 +38,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
+        <!--Spring End-->
 
         <!-- Servlet Begin -->
         <dependency>
@@ -47,6 +51,42 @@
             <artifactId>jstl</artifactId>
         </dependency>
         <!-- Servlet End -->
+
+        <!--Druid Begin-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!--Druid END-->
+        <!--MyBatis Begin-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+        </dependency>
+        <!--MyBatis END-->
+
+        <!--Test Begin-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    <!--Test END-->
     </dependencies>
 
 </project>
