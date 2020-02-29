@@ -10,4 +10,14 @@ public interface TbUserService {
      * @return
      */
     public List<TbUser> selectAll();
+
+    public void insert(TbUser tbUser);
+
+    public void delete(Long id);
+
+    public TbUser getById(Long id);
+
+    public void update(TbUser tbUser);
+
+    public List<TbUser> getByUsername(String username);
 }
