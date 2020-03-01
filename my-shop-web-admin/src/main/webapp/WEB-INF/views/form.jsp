@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,34 +55,33 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form class="form-horizontal" action="/user/save" method="post">
+                        <form:form cssClass="form-horizontal" action="/user/save" method="post" modelAttribute="tbUser">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">邮箱</label>
-
+                                    <label for="email" class="col-sm-2 control-label">邮箱</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="inputEmail3" name="email" placeholder="请输入邮箱">
+                                        <form:input cssClass="form-control" path="email" placeholder="请输入邮箱"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+                                    <label for="password" class="col-sm-2 control-label">密码</label>
 
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="请输入密码">
+                                        <form:input path="password" cssClass="form-control" placeholder="请输入密码"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label" >姓名</label>
+                                    <label for="username" class="col-sm-2 control-label" >姓名</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName" name="username" placeholder="请输入姓名">
+                                        <form:input path="username" cssClass="form-control" placeholder="请输入姓名"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputPhone" class="col-sm-2 control-label">手机</label>
+                                    <label for="phone" class="col-sm-2 control-label">手机</label>
 
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="inputPhone" name="phone" placeholder="请输入手机号">
+                                        <form:input path="phone" cssClass="form-control" placeholder="请输入手机号"/>
                                     </div>
                                 </div>
                             </div>
@@ -91,9 +91,9 @@
                                 <button type="submit" class="btn btn-info pull-right">提交</button>
                             </div>
                             <!-- /.box-footer -->
-                        </form>
+                        </form:form>
+                     </div>
                 </div>
-                    </div>
             </div>
             <!-- /.box -->
         </section>
