@@ -5,6 +5,7 @@ import com.shuke.my.shop.web.admin.dao.TbUserDao;
 import com.shuke.my.shop.web.admin.service.TbUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 import java.util.List;
 
@@ -39,5 +40,23 @@ public class TbUserServiceImpl implements TbUserService {
     public List<TbUser> getByUsername(String username) {
 
         return tbUserDao.getByUsername(username);
+    }
+
+    /**
+     * 用户登录业务
+     * @param email
+     * @param password
+     * @return 用户信息
+     */
+    @Override
+    public TbUser login(String email, String password) {
+        TbUser tbUser = tbUserDao.getByEmail(email);
+        if (tbUser != null) {
+            //加密判断
+            if (DigestUtils.md5DigestAsHex(password.getBytes()).equals(tbUser.getPassword())) {
+                return tbUser;
+            }
+        }
+        return null;
     }
 }

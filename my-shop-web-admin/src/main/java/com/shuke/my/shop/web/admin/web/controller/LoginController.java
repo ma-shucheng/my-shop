@@ -3,8 +3,8 @@ package com.shuke.my.shop.web.admin.web.controller;
 
 import com.shuke.my.shop.commons.constants.ConstantUtils;
 import com.shuke.my.shop.commons.utils.CookieUtils;
-import com.shuke.my.shop.domain.User;
-import com.shuke.my.shop.web.admin.service.UserService;
+import com.shuke.my.shop.domain.TbUser;
+import com.shuke.my.shop.web.admin.service.TbUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +24,7 @@ import static com.shuke.my.shop.commons.constants.ConstantUtils.COM_SHUKE_LOGINF
 public class LoginController {
 
     @Autowired
-    private UserService userService;
+    private TbUserService tbUserService;
 
     private Logger logger = LoggerFactory.getLogger(LoginController.class);
 
@@ -40,7 +40,7 @@ public class LoginController {
 
     @RequestMapping(value = {"login"}, method = RequestMethod.POST)
     public String login(@RequestParam(required = false) String remMe,@RequestParam(required = true) String email, @RequestParam(required = true) String loginPwd, HttpServletRequest req,HttpServletResponse resp) {
-        User user = userService.login(email, loginPwd);
+        TbUser user = tbUserService.login(email, loginPwd);
 
         logger.info("创建对象记住我、邮箱、密码分别为：{}  {}  {}",remMe,email,loginPwd);
         //如果点击记住我,将用户名和密码信息存入Cookie

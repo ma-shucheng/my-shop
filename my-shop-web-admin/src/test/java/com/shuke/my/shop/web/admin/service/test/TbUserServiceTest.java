@@ -1,6 +1,7 @@
 package com.shuke.my.shop.web.admin.service.test;
 
 import com.shuke.my.shop.domain.TbUser;
+import com.shuke.my.shop.web.admin.dao.TbUserDao;
 import com.shuke.my.shop.web.admin.service.TbUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,8 +31,8 @@ public class TbUserServiceTest {
     public void testInsert(){
         TbUser tbUser = new TbUser();
         tbUser.setUsername("shuke");
-        tbUser.setEmail("123@qq.com");
-        tbUser.setPassword(DigestUtils.md5DigestAsHex("123456".getBytes()));
+        tbUser.setEmail("admin@qq.com");
+        tbUser.setPassword(DigestUtils.md5DigestAsHex("admin".getBytes()));
         tbUser.setPhone("123456");
         tbUser.setCreated(new Date());
         tbUser.setUpdated(new Date());
@@ -47,6 +48,12 @@ public class TbUserServiceTest {
         TbUser tbUser = tbUserService.getById((long) 16);
         System.out.println(tbUser);
     }
+    @Test
+    public void  testLogin() {
+        TbUser tbUser = tbUserService.login("admin@qq.com","admin");
+        System.out.println(tbUser);
+    }
+
     @Test
     public void testUpdate() {
         TbUser tbUser = tbUserService.getById(22L);

@@ -1,7 +1,7 @@
 package com.shuke.my.shop.web.admin.web.intercept;
 
 import com.shuke.my.shop.commons.constants.ConstantUtils;
-import com.shuke.my.shop.domain.User;
+import com.shuke.my.shop.domain.TbUser;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,7 +16,7 @@ public class PermissionIntecept implements HandlerInterceptor {
 
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
         if (modelAndView.getViewName().endsWith("login")) {
-            User user = (User) httpServletRequest.getSession().getAttribute(ConstantUtils.SESSION_USER);
+            TbUser user = (TbUser) httpServletRequest.getSession().getAttribute(ConstantUtils.SESSION_USER);
             if (user != null) {
                 httpServletResponse.sendRedirect("/main");
             }

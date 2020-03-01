@@ -20,4 +20,6 @@ public interface TbUserService {
     public void update(TbUser tbUser);
 
     public List<TbUser> getByUsername(String username);
+
+    public TbUser login(String email, String password);
 }

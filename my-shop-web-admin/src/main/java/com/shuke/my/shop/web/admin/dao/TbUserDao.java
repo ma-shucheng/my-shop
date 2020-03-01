@@ -22,4 +22,6 @@ public interface TbUserDao {
     public void update(TbUser tbUser);
 
     public List<TbUser> getByUsername(String username);
+
+    TbUser getByEmail(String email);
 }
