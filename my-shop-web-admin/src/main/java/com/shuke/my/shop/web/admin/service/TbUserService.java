@@ -1,5 +1,6 @@
 package com.shuke.my.shop.web.admin.service;
 
+import com.shuke.my.shop.commons.dto.BaseResult;
 import com.shuke.my.shop.domain.TbUser;
 
 import java.util.List;
@@ -22,4 +23,8 @@ public interface TbUserService {
     public List<TbUser> getByUsername(String username);
 
     public TbUser login(String email, String password);
+
+    public BaseResult save(TbUser tbUser);
+
+    public BaseResult checkTbUser(TbUser tbUser);
 }
