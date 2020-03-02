@@ -21,7 +21,24 @@ public interface TbUserDao {
 
     public void update(TbUser tbUser);
 
+    /**
+     * 通过用户名查找用户信息
+     * @param username
+     * @return
+     */
     public List<TbUser> getByUsername(String username);
 
+    /**
+     * 通过邮箱查找用户信息
+     * @param email
+     * @return
+     */
     TbUser getByEmail(String email);
+
+    /**
+     * 搜索用户信息
+     * @param tbUser
+     * @return
+     */
+    List<TbUser> search(TbUser tbUser);
 }

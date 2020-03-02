@@ -74,4 +74,17 @@ public class UserController {
             return "form";
         }
     }
+
+    /**
+     * 搜索
+     * @param keyword
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "search",method = RequestMethod.POST)
+    public String search(String keyword,Model model) {
+        List<TbUser> tbUsers = tbUserService.search(keyword);
+        model.addAttribute("tbUsers", tbUsers);
+        return "table";
+    }
 }

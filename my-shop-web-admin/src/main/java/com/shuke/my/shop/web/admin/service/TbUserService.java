@@ -27,4 +27,6 @@ public interface TbUserService {
     public BaseResult save(TbUser tbUser);
 
     public BaseResult checkTbUser(TbUser tbUser);
+
+    public List<TbUser> search(String keyword);
 }

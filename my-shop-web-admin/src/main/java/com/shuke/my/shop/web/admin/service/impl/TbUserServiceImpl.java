@@ -114,4 +114,23 @@ public class TbUserServiceImpl implements TbUserService {
         }
         return baseResult;
     }
+
+    /**
+     * 搜索业务
+     * @param keyword
+     * @return
+     */
+    @Override
+    public List<TbUser> search(String keyword) {
+        TbUser tbUser = new TbUser();
+        if (RegexUtils.checkEmail(keyword)) {
+            tbUser.setEmail(keyword);
+        } else if (RegexUtils.checkMobile(keyword)) {
+            tbUser.setPhone(keyword);
+        }else{
+            tbUser.setUsername(keyword);
+        }
+        List<TbUser> tbUsers = tbUserDao.search(tbUser);
+        return tbUsers;
+    }
 }
