@@ -98,4 +98,12 @@ VALUES
             </if>
         </where>
     </select>
+    
+    <select id="deleteMulti">
+        DELETE FROM tb_user AS a
+        WHERE id IN
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </select>
 </mapper>

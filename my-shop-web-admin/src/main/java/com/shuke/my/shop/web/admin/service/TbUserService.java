@@ -29,4 +29,6 @@ public interface TbUserService {
     public BaseResult checkTbUser(TbUser tbUser);
 
     public List<TbUser> search(String keyword);
+
+    public void deleteMulti(String[] ids);
 }

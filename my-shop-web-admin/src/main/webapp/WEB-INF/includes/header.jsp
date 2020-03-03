@@ -1,4 +1,7 @@
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Tell the browser to be responsive to screen width -->
@@ -13,6 +16,8 @@
 <link rel="stylesheet" href="../../static/assets/css/AdminLTE.min.css">
 <!-- iCheck -->
 <link rel="stylesheet" href="../../static/assets/plugins/iCheck/square/blue.css">
+<!-- iCheck for checkboxes and radio inputs -->
+<link rel="stylesheet" href="../../static/assets/plugins/iCheck/all.css">
 <!-- AdminLTE Skins. Choose a skin from the css/skins
 folder instead of downloading all of them to reduce the load. -->
 <link rel="stylesheet" href="../../static/assets/css/skins/_all-skins.min.css">

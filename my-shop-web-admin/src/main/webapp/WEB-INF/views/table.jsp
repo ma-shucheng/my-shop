@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -112,7 +114,49 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">关闭</button>
-                                            <a href="#" type="button" class="btn btn-outline">确认</a>
+                                            <button type="button" class="btn btn-outline" data-dismiss="modal" onclick="App.deleteMulti('/user/delete')">确认</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <!-- /.modal -->
+                            <div class="modal fade" id="modal-noselect">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">温馨提示</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>您还没有选择一个项目</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">确认</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <!-- /.modal -->
+                            <div class="modal modal-info fade" id="modal-delete-success">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">温馨提示</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>您所选的项目已成功删除</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="App.reboot()">确认</button>
                                         </div>
                                     </div>
                                     <!-- /.modal-content -->
@@ -157,6 +201,7 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
+                                    <th><input type="checkbox" class="flat-red icheck_master"></th>
                                     <th>ID</th>
                                     <th>用户名</th>
                                     <th>手机号</th>
@@ -168,6 +213,8 @@
                                 <tbody>
                                 <c:forEach items="${tbUsers}" var="tbUser">
                                 <tr>
+                                    <!--为每个选择框分配编号-->
+                                    <td><input type="checkbox" class="flat-red" id="${tbUser.id}"></td>
                                     <td>${tbUser.id}</td>
                                     <td>${tbUser.username}</td>
                                     <td>${tbUser.phone}</td>
@@ -181,16 +228,6 @@
                                 </tr>
                                 </c:forEach>
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>用户名</th>
-                                    <th>手机号</th>
-                                    <th>邮箱</th>
-                                    <th>更新时间</th>
-                                    <th>操作</th>
-                                </tr>
-                                </tfoot>
                             </table>
                         </div>
                         <!-- /.box-body -->
@@ -208,5 +245,6 @@
 </div>
 
 <jsp:include page="../includes/body.jsp"/>
+
 </body>
 </html>

@@ -133,4 +133,9 @@ public class TbUserServiceImpl implements TbUserService {
         List<TbUser> tbUsers = tbUserDao.search(tbUser);
         return tbUsers;
     }
+
+    @Override
+    public void deleteMulti(String[] ids) {
+        tbUserDao.deleteMulti(ids);
+    }
 }

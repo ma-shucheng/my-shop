@@ -1,4 +1,7 @@
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!-- jQuery 3 -->
 <script src="../../static/assets/bower_components/jquery/dist/jquery.min.js"></script>
@@ -42,6 +45,8 @@
 <script src="../../static/assets/js/demo.js"></script>
 <!-- iCheck -->
 <script src="../../static/assets/plugins/iCheck/icheck.min.js"></script>
+<!--App-->
+<script src="../../static/assets/app/app.js"></script>
 <!-- page script -->
 <script>
     $(function () {
@@ -65,5 +70,18 @@
             increaseArea: '20%' /* optional */
         });
     });
+</script>
+
+
+<script>
+    $(function () {
+        //选择框初始化
+        App.init();
+        //返回选中框
+        var _checkbox = App.getCheckbox();
+        _checkbox.each(function () {
+            console.log($(this).is(":checked"));
+        });
+    })
 </script>
 
