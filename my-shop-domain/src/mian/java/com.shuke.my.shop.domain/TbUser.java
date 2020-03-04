@@ -1,39 +1,23 @@
 package com.shuke.my.shop.domain;
 
-import java.io.Serializable;
+import com.shuke.my.shop.commons.persistence.BaseEntity;
+
 import java.util.Date;
 
-public class TbUser implements Serializable {
-    private Long id;
+public class TbUser extends BaseEntity {
     private String username;
     private String password;
     private String phone;
     private String email;
-    //创建和更新时间
-    private Date created;
-    private Date updated;
 
     @Override
     public String toString() {
         return "TbUser{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
+                "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", created=" + created +
-                ", updated=" + updated +
                 '}';
-    }
-
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getUsername() {
@@ -66,21 +50,5 @@ public class TbUser implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public Date getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(Date updated) {
-        this.updated = updated;
     }
 }

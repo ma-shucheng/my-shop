@@ -16,6 +16,12 @@
     <name>my-shop-domain</name>
     <description></description>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.shuke</groupId>
+            <artifactId>my-shop-commons</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
