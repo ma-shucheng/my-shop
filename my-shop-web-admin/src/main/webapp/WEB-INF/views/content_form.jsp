@@ -2,10 +2,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sys" tagdir="/WEB-INF/tags/sys" %>
 <!DOCTYPE html>
 <html>
 <head>
     <jsp:include page="../includes/header.jsp"/>
+    <link rel="stylesheet" href="../../static/assets/plugins/jquery-ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
     <title>我的商城</title>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -51,30 +53,18 @@
                     <!-- Horizontal Form -->
                     <div class="box box-info">
                         <div class="box-header with-border">
-                            <h3 class="box-title">${tbContent ==null?"新增":"编辑"}用户</h3>
+                            <h3 class="box-title">${tbContent ==null?"新增":"编辑"}内容</h3>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
                         <form:form cssClass="form-horizontal" action="/content/save" method="post" modelAttribute="tbContent">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="title" class="col-sm-2 control-label">标题</label>
+                                    <label for="categoryId" class="col-sm-2 control-label">父级类目</label>
                                     <div class="col-sm-10">
-                                        <form:input cssClass="form-control" path="title" placeholder="请输入标题"/>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="subTitle" class="col-sm-2 control-label">副标题</label>
-
-                                    <div class="col-sm-10">
-                                        <form:input path="subTitle" cssClass="form-control" placeholder="请输入副标题"/>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="titleDesc" class="col-sm-2 control-label" >标题描述</label>
-
-                                    <div class="col-sm-10">
-                                        <form:input path="titleDesc" cssClass="form-control" placeholder="请输入标题描述"/>
+                                        <!--隐藏选中路径，输入id对应名字-->
+                                        <form:hidden path="categoryId"/>
+                                        <input id="categoryName" class="form-control required" placeholder="请选择" readonly="true" data-toggle="modal" data-target="#modal-select"/>
                                     </div>
                                 </div>
                             </div>
@@ -98,5 +88,37 @@
 </div>
 
 <jsp:include page="../includes/body.jsp"/>
+<script type="text/javascript" src="../../static/assets/plugins/jquery-ztree/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../../static/assets/plugins/jquery-ztree/js/jquery.ztree.core-3.5.js"></script>
+<sys:model title="请选择" message="<ul id='myTree' class='ztree'></ul>"/>
+<script>
+    $(function () {
+        var setting = {
+            view: {
+                selectedMulti: false
+            },
+            async: {
+                enable: true,
+                url:"/content/category/tree/data",
+                autoParam:["id"],
+            }
+        };
+        $.fn.zTree.init($("#myTree"), setting);
+        $("#btnModalOk").bind("click", function () {
+            var zTree = $.fn.zTree.getZTreeObj("myTree"),
+                nodes = zTree.getSelectedNodes();
+            //未选择
+            if (nodes.length == 0) {
+                alert("请先选择一节点");
+            }
+            //已选择
+            else {
+                var node = nodes[0];
+                $("#categoryId").val(node.id);
+                $("#categoryName").val(node.name);
+            }
+        })
+    });
+</script>
 </body>
 </html>

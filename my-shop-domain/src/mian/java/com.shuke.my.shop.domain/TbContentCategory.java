@@ -1,5 +1,6 @@
 package com.shuke.my.shop.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.shuke.my.shop.commons.persistence.BaseEntity;
 
 /**
@@ -17,6 +18,7 @@ public class TbContentCategory extends BaseEntity {
     private String name;
     private Integer status;
     private Integer sortOrder;
+    @JsonProperty(value = "isParent")
     private Boolean isParent;
 
     public Long getParentId() {

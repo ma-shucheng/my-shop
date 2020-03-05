@@ -209,7 +209,7 @@
                                     <th>链接</th>
                                     <th>图片1</th>
                                     <th>图片2</th>
-                                    <th>更新时 间</th>
+                                    <th>更新时间</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -222,9 +222,9 @@
                                         <td>${tbContent.title}</td>
                                         <td>${tbContent.subTitle}</td>
                                         <td>${tbContent.titleDesc}</td>
-                                        <td>${tbContent.url}</td>
-                                        <td>${tbContent.pic}</td>
-                                        <td>${tbContent.pic2}</td>
+                                        <td><a href="${tbContent.url}" target="_blank">${tbContent.url!=null?"查看":""}</a></td>
+                                        <td><a href="${tbContent.pic}" target="_blank">${tbContent.pic!=null?"查看":""}</a></td>
+                                        <td><a href="${tbContent.pic2}" target="_blank">${tbContent.pic2!=null?"查看":""}</a></td>
                                         <td><fmt:formatDate value="${tbContent.updated}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                                         <td>
                                             <a href="#" type="button" class="btn btn-sm btn-default"><i class="fa fa-search"></i>查看</a>&nbsp;&nbsp;&nbsp;
