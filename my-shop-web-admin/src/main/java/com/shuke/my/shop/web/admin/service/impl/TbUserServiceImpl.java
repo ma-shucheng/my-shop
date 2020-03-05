@@ -2,6 +2,7 @@ package com.shuke.my.shop.web.admin.service.impl;
 
 import com.shuke.my.shop.commons.dto.BaseResult;
 import com.shuke.my.shop.commons.utils.RegexUtils;
+import com.shuke.my.shop.commons.validator.BeanValidator;
 import com.shuke.my.shop.domain.TbUser;
 import com.shuke.my.shop.web.admin.dao.TbUserDao;
 import com.shuke.my.shop.web.admin.service.TbUserService;
@@ -71,8 +72,13 @@ public class TbUserServiceImpl implements TbUserService {
      */
     @Override
     public BaseResult save(TbUser tbUser) {
-        BaseResult baseResult = checkTbUser(tbUser);
-        if (baseResult.getStatus()==BaseResult.STATUS_SUCCESS) {
+        String validator = BeanValidator.validator(tbUser);
+        //验证不通过
+        if (validator != null) {
+            return BaseResult.fail(validator);
+        }
+        //验证通过
+        else {
             tbUser.setUpdated(new Date());
             //编辑用户
             if (tbUser.getId() != null) {
@@ -85,9 +91,8 @@ public class TbUserServiceImpl implements TbUserService {
                 tbUser.setCreated(new Date());
                 tbUserDao.insert(tbUser);
             }
-            baseResult.setMessage("保存用户信息成功");
+            return BaseResult.success("保存用户信息成功");
         }
-        return baseResult;
     }
 
     /**

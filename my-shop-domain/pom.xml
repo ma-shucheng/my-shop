@@ -37,6 +37,12 @@
             <artifactId>jackson-annotations</artifactId>
         </dependency>
         <!-- Json End -->
+        <!-- Lombok Begin -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- Lombok End -->
     </dependencies>
 
 </project>

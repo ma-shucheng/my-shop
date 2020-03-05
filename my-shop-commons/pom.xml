@@ -19,6 +19,11 @@
 
 
     <dependencies>
+        <!-- spring-context Begin -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
         <!-- Log Begin -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -58,6 +63,14 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
+        <!-- spring-validation Begin -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+        <!-- spring-validation End -->
+
+
     </dependencies>
 
 </project>
