@@ -1,12 +1,14 @@
 package com.shuke.my.shop.web.admin.service.impl;
 
 import com.shuke.my.shop.commons.dto.BaseResult;
+import com.shuke.my.shop.commons.validator.BeanValidator;
 import com.shuke.my.shop.domain.TbContent;
 import com.shuke.my.shop.web.admin.dao.TbContentDao;
 import com.shuke.my.shop.web.admin.service.TbContentService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -43,8 +45,13 @@ public class TbContentServiceImpl implements TbContentService {
 
     @Override
     public BaseResult save(TbContent tbContent) {
-        BaseResult baseResult = checkTbContent(tbContent);
-        if (baseResult.getStatus()==BaseResult.STATUS_SUCCESS) {
+        String validator = BeanValidator.validator(tbContent);
+        //验证不通过
+        if (validator != null) {
+            return BaseResult.fail(validator);
+        }
+        //验证通过
+        else {
             tbContent.setUpdated(new Date());
             //编辑用户
             if (tbContent.getId() != null) {
@@ -54,9 +61,8 @@ public class TbContentServiceImpl implements TbContentService {
             else {
                 tbContentDao.insert(tbContent);
             }
-            baseResult.setMessage("保存信息成功");
+            return BaseResult.success("保存内容信息成功");
         }
-        return baseResult;
     }
 
     @Override

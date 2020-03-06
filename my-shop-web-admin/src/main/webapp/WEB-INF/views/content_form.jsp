@@ -8,6 +8,9 @@
 <head>
     <jsp:include page="../includes/header.jsp"/>
     <link rel="stylesheet" href="../../static/assets/plugins/jquery-ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link rel="stylesheet" href="../../static/assets/plugins/dropzone/min/dropzone.min.css" />
+    <link rel="stylesheet" href="../../static/assets/plugins/dropzone/min/basic.min.css" />
+    <link rel="stylesheet" href="../../static/assets/plugins/wangEditor/wangEditor.min.css" />
     <title>我的商城</title>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -34,7 +37,7 @@
         </section>
         <section class="content">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-11">
                     <c:if test="${baseResult!=null}">
                         <div class="box">
                             <div class="box-header with-border callout callout-${baseResult.status==200?"success":"danger"}">
@@ -67,11 +70,61 @@
                                         <input id="categoryName" class="form-control required" placeholder="请选择" readonly="true" data-toggle="modal" data-target="#modal-select"/>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">标题</label>
+                                    <div class="col-sm-10">
+                                        <form:input cssClass="form-control" path="title" placeholder="标题"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subTitle" class="col-sm-2 control-label">子标题</label>
+                                    <div class="col-sm-10">
+                                        <form:input cssClass="form-control" path="subTitle" placeholder="子标题"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="titleDesc" class="col-sm-2 control-label">标题描述</label>
+                                    <div class="col-sm-10">
+                                        <form:input cssClass="form-control" path="titleDesc" placeholder="标题描述"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="url" class="col-sm-2 control-label">链接</label>
+                                    <div class="col-sm-10">
+                                        <form:input cssClass="form-control" path="url" placeholder="链接"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pic" class="col-sm-2 control-label">图片1</label>
+                                    <div class="col-sm-10">
+                                        <form:input cssClass="form-control" path="pic" placeholder="图片1"/>
+                                        <div id="dropz" class="dropzone">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pic2" class="col-sm-2 control-label">图片2</label>
+                                    <div class="col-sm-10">
+                                        <form:input cssClass="form-control" path="pic2" placeholder="图片2"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">详情</label>
+                                    <div class="col-sm-10">
+                                        <form:hidden path="content"/>
+                                        <div id="editor">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
                                 <button type="button" class="btn btn-default" onclick="history.go(-1);">返回</button>
-                                <button type="submit" class="btn btn-info pull-right">提交</button>
+                                <button id="btnSubmit" type="submit" class="btn btn-info pull-right">提交</button>
                             </div>
                             <!-- /.box-footer -->
                         </form:form>
@@ -90,6 +143,8 @@
 <jsp:include page="../includes/body.jsp"/>
 <script type="text/javascript" src="../../static/assets/plugins/jquery-ztree/js/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="../../static/assets/plugins/jquery-ztree/js/jquery.ztree.core-3.5.js"></script>
+<script src="../../static/assets/plugins/dropzone/min/dropzone.min.js"></script>
+<script src="../../static/assets/plugins/wangEditor/wangEditor.min.js"></script>
 <sys:model title="请选择" message="<ul id='myTree' class='ztree'></ul>"/>
 <script>
     $(function () {
@@ -119,6 +174,42 @@
             }
         })
     });
+</script>
+<%--上传图片--%>
+<script>
+    var myDropzone = new Dropzone("#dropz", {
+        url: "/upload",
+        paramName: "dropFile", // 传到后台的参数名称
+        dictDefaultMessage: '拖动文件至此或者点击上传', // 设置默认的提示语句
+        init: function () {
+            this.on("success", function (file, data) {
+                // 上传成功触发的事件
+                $("#pic").val(data.fileName);
+            });
+        }
+    });
+</script>
+<%--使用wangEditor--%>
+<script>
+    $(function () {
+        var E = window.wangEditor;
+        var editor = new E('#editor');
+        // 配置服务器端地址
+        editor.customConfig.uploadImgServer = '/upload';
+        editor.customConfig.uploadFileName = 'editorFile';
+        editor.create();
+
+        $("#btnSubmit").bind("click",function () {
+            var contentHtml = editor.txt.html();
+            $("#content").val(contentHtml);
+        });
+
+
+    })
+</script>
+
+<script>
+
 </script>
 </body>
 </html>

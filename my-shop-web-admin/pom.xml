@@ -96,6 +96,12 @@
             <artifactId>jackson-annotations</artifactId>
         </dependency>
         <!-- Json End -->
+
+        <!-- commons-fileupload End -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+        </dependency>
     <!--Test END-->
     </dependencies>
 
